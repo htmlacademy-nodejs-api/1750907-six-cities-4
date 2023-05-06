@@ -17,6 +17,7 @@ export type Offer = {
   flatType: Flat;
   rooms: number;
   guests: number;
+  price: number;
   features: Features;
   author: Author;
   location: Location;
