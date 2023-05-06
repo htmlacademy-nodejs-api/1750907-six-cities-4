@@ -1,6 +1,6 @@
 import { Author } from './author.type';
 import { City } from './city.enum';
-// import { Features } from './features.enum';
+import { Features } from './features.enum';
 import { Flat } from './flat.enum';
 import { Location } from './location.type';
 
@@ -18,7 +18,7 @@ export type Offer = {
   rooms: number;
   guests: number;
   price: number;
-  features: string[];
+  features: Features[];
   author: Author;
   location: Location;
 }
