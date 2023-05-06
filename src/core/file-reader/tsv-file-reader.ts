@@ -3,7 +3,7 @@ import { Offer } from '../../types/offer.type.js';
 import { readFileSync } from 'node:fs';
 import { City } from '../../types/city.enum.js';
 import { Flat } from '../../types/flat.enum.js';
-import { Features } from '../../types/features.enum.js';
+// import { Features } from '../../types/features.enum.js';
 
 export default class TSVFileReader implements FileReaderInterface {
   private rawData = '';
@@ -37,7 +37,7 @@ export default class TSVFileReader implements FileReaderInterface {
         rooms: Number.parseInt(rooms, 10),
         guests: Number.parseInt(guests, 10),
         price: Number.parseInt(price, 10),
-        features: Features[features as 'Breakfast' | 'Air conditioning' | 'Laptop friendly workspace' | 'Baby seat' | 'Washer' | 'Towels' | 'Fridge'],
+        features: features.split(';'),
         author: {email, avatarPath, firstname, lastname},
         location: {
           latitude: Number.parseFloat(latitude),
