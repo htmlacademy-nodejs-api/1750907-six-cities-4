@@ -19,10 +19,10 @@ export function createOffer(offerData: string): Offer {
     guests,
     price,
     features,
-    email,
-    avatarPath,
     firstname,
     lastname,
+    email,
+    avatarPath,
     latitude,
     longitude
   ] = offerData.replace('\n', '').split('\t');
