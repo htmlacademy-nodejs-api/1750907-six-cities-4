@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { MockData } from '../../types/mock-data.type.js';
 import { OfferGeneratorInterface } from './offer-generator.interface.js';
-import { generateRandomValue, getQuantedRandomItems, getRandomFloat, getRandomItem, getRandomItems } from '../../core/helpers';
+import { generateRandomValue, getQuantedRandomItems, getRandomFloat, getRandomItem, getRandomItems } from '../../core/helpers/random.js';
 
 const FIRST_WEEK_DAY = 1;
 const LAST_WEEK_DAY = 7;
@@ -34,13 +34,13 @@ export default class OfferGenerator implements OfferGeneratorInterface {
   public generate(): string {
     const title = getRandomItem<string>(this.mockData.titles);
     const description = getRandomItem<string>(this.mockData.descriptions);
-    const offerDate = dayjs().subtract(generateRandomValue(FIRST_WEEK_DAY, LAST_WEEK_DAY)).toISOString;
+    const offerDate = dayjs().subtract(generateRandomValue(FIRST_WEEK_DAY, LAST_WEEK_DAY)).toISOString();
     const city = getRandomItem<string>(this.mockData.cities);
     const preview = getRandomItem<string>(this.mockData.previews);
     const photos = getQuantedRandomItems<string>(this.mockData.photos, PHOTOS_QNT).join(';');
     const isFavorite = generateRandomValue(BOOLEAN_FALSE, BOOLEAN_TRUE).toString();
     const isPremium = generateRandomValue(BOOLEAN_FALSE, BOOLEAN_TRUE).toString();
-    const rating = getRandomFloat(RATING_MIN, RATING_MAX, 1).toString();
+    const rating = getRandomFloat(RATING_MIN, RATING_MAX, 5).toString();
     const flatType = getRandomItem<string>(this.mockData.flatTypes);
     const price = generateRandomValue(MIN_PRICE, MAX_PRICE).toString();
     const rooms = generateRandomValue(ROOMS_MIN, ROOMS_MAX).toString();

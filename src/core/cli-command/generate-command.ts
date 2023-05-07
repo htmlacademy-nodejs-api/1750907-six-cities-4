@@ -9,6 +9,7 @@ export default class GenerateCommand implements CliCommandInterface {
   private initialData!: MockData;
 
   public async execute(...parameters:string[]): Promise<void> {
+    console.dir(parameters);
     const [count, filepath, url] = parameters;
     const offerCount = Number.parseInt(count, 10);
 
