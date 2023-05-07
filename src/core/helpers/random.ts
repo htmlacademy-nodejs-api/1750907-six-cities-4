@@ -11,3 +11,24 @@ export function getRandomItems<T>(items: T[]):T[] {
 export function getRandomItem<T>(items: T[]):T {
   return items[generateRandomValue(0, items.length - 1)];
 }
+
+// перемешивает значения массива
+export function shuffleArray<T>(items: T[]): T[] {
+  return items.sort(() => Math.random() - 0.5);
+}
+
+// выбирает заданное число случайных элементов массива
+export function getQuantedRandomItems<T>(items: T[], qnt: number): T[] {
+  return shuffleArray(items).slice(0, qnt);
+}
+
+// генерирует случайные плавающие числа
+export function getRandomFloat(min: number, max: number, decimals: number) {
+  const str = (Math.random() * (max - min) + min).toFixed(decimals);
+
+  return parseFloat(str);
+}
+
+// const mockData = ['Algebra', 'Gemotria', 'Izo', 'Trud'];
+
+// console.log(getQuantedRandomItems(mockData, 3));
