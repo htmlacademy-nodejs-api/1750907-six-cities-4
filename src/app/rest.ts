@@ -5,6 +5,7 @@ import { AppComponent } from '../types/app-component.enum.js';
 import { inject, injectable } from 'inversify';
 import { DatabaseClientInterface } from '../core/database-client/database-client.interface.js';
 import { getMongoURI } from '../core/helpers/index.js';
+import { AuthorModel } from '../modules/author/author.model.js';
 
 @injectable()
 export default class RestApplication {
@@ -12,7 +13,7 @@ export default class RestApplication {
     @inject(AppComponent.LoggerInterface) private readonly logger: LoggerInterface,
     @inject(AppComponent.ConfigInterface) private readonly config: ConfigInterface<RestSchema>,
     @inject(AppComponent.DatabaseClientInterface) private readonly databaseClient: DatabaseClientInterface,
-  ) {}
+  ) { }
 
   private async _initDb() {
     const mongoUri = getMongoURI(
@@ -32,5 +33,17 @@ export default class RestApplication {
     this.logger.info('Init database...');
     await this._initDb();
     this.logger.info('Init database completed');
+
+    const author = await AuthorModel.create({
+      email: 'test@emailru',
+      avatarPath: 'keks.jpg',
+      firstname: '2',
+      lastname: 'Unknown'
+    })
+
+    console.log(author);
+
+    const error = author.validateSync();
+    console.log(error);
   }
 }
