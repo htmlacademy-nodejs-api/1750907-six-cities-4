@@ -3,7 +3,7 @@ import typegoose, { defaultClasses, getModelForClass } from '@typegoose/typegoos
 
 const { prop } = typegoose;
 
-export interface UserEntity extends defaultClasses.Base{}
+export interface AuthorEntity extends defaultClasses.Base{}
 export class AuthorEntity extends defaultClasses.TimeStamps implements Author {
   @prop({ unique: true, required: true })
   public email = '';
