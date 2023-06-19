@@ -1,9 +1,10 @@
 import { Author } from '../../types/author.type.js';
-import typegoose, { getModelForClass } from '@typegoose/typegoose';
+import typegoose, { defaultClasses, getModelForClass } from '@typegoose/typegoose';
 
 const { prop } = typegoose;
 
-export class AuthorEntity implements Author {
+export interface UserEntity extends defaultClasses.Base{}
+export class AuthorEntity extends defaultClasses.TimeStamps implements Author {
   @prop({ unique: true, required: true })
   public email = '';
 
