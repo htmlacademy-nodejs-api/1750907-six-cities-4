@@ -1,6 +1,6 @@
 export type Author = {
   email: string;
   avatarPath: string;
-  firstname: string;
-  lastname: string;
+  username: string;
+  isPro: boolean;
 }
