@@ -12,14 +12,14 @@ tags:
     description: Действия с объявлениями
   - name: comments
     description: Действия с комментариями
-  - name: users
+  - name: authors
     description: Действия с пользователем.
 
 paths:
-  /users/register:
+  /authors/register:
     post:
       tags:
-        - users
+        - authors
       summary: Регистрация пользователя
       description: Регистрирует нового пользователя.
 
@@ -28,7 +28,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createUser'
+              $ref: '#/components/schemas/createauthor'
         required: true
 
       responses:
@@ -37,35 +37,35 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/user'
+                $ref: '#/components/schemas/author'
 
         "409":
           description: Пользователь с таким email уже существует
 
-  /users/login:
+  /authors/login:
     post:
       tags:
-        - users
+        - authors
       summary: Авторизация пользователя
       description: Авторизует пользователя на основе логина и пароля
 
     get:
       tags:
-        - users
+        - authors
       summary: Проверка состояния пользователя
       description: Возвращает информацию по авторизованному пользователю
 
-  /users/{userId}/avatar:
+  /authors/{authorId}/avatar:
     post:
       tags:
-        - users
+        - authors
       summary: Загрузить изображение аватара
       description: Загружает изображение аватара пользователя. Изображение
         аватара должно быть в формате `png` или `jpg`.
 
 components:
   schemas:
-    createUser:
+    createauthor:
       type: object
 
       properties:
@@ -73,7 +73,7 @@ components:
           type: string
           example: keks@htmlacademy.ru
 
-        username:
+        authorname:
           type: string
           example: Keks
 
@@ -81,7 +81,7 @@ components:
           type: string
           example: 123456
     
-    user:
+    author:
       type: object
 
       properties:
